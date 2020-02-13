@@ -4,12 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>JS Bin</title>
+
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
     <link rel="stylesheet" type="text/css" href="./css/animation.css">
-    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 
@@ -20,41 +22,100 @@
 <div id="app">
 
 
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div id="example-4">
+                    <button @click="showMethod">
+                        Toggle render
+                    </button>
+                    <transition
+                            name="custom-classes-transition"
+                            enter-active-class="animated tada"
+                            leave-active-class="animated bounceOutRight"
+                    >
+                        <p v-if="show">hello</p>
+                    </transition>
+                </div>
+            </div>
+            <div class="col-sm">
+                <transition name="slide-fade">
+                    <div class="card" style="width: 18rem;" v-if="buttonCard">
+                        <img :src="imgCard[0].url" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <button class="btn btn-primary" @click="buttonCard = !buttonCard">Go somewhere</button>
+                        </div>
+                    </div>
+                </transition>
+                <transition name="slide-fade">
+                    <div class="card" style="width: 18rem;"v-if="!buttonCard">
+                        <img :src="imgCard[1].url" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title2</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <button class="btn btn-primary" @click="buttonCard = !buttonCard">Go somewhere</button>
+                        </div>
+                    </div>
+                </transition>
+            </div>
+        </div>
 
-    <div id="example-3">
-        <button @click="showMethod">
-            Toggle render
-        </button>
-        <transition
-                name="custom-classes-transition"
-                enter-active-class="animated tada"
-                leave-active-class="animated bounceOutRight"
-        >
-            <p v-if="show">hello</p>
-        </transition>
+        <div class="row">
+            <div class="col-sm">
+                <div id="example-3">
+
+
+                    <transition name="slide-fade"
+                                mode="out-in"
+                                enter-active-class="animated flipInY"
+                                leave-active-class="animated flipOutY"
+                    >
+                        <div class="card" style="width: 18rem;" v-if="buttonCard2" key="key1">
+                            <img :src="imgCard[0].url" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <button class="btn btn-primary" @click="buttonCard2 = !buttonCard2">Go somewhere</button>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 18rem;" v-else key="key2">
+                            <img :src="imgCard[1].url" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title2</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <button class="btn btn-primary" @click="buttonCard2 = !buttonCard2">Go somewhere</button>
+                            </div>
+                        </div>
+                    </transition>
+
+                </div>
+            </div>
+            <div class="col-sm">
+
+                <button @click="buttonCard3 = !buttonCard3">Click Me!</button>
+                <transition mode="out-in">
+                    <div class="block" v-if="buttonCard3">Block 1</div>
+                    <p class="block" v-else>Block 2</p>
+                </transition>
+
+                <button @click="buttonCard4 = !buttonCard4">Click Me!</button>
+                <transition :name="alertAnimation" mode="out-in">
+                    <div class="alert alert-primary" role="alert" v-if="buttonCard4" key="info">
+                        202. Transitioning between Multiple Elements (Practice) key="info"
+                    </div>
+                    <div class="alert alert-danger" role="alert" v-else key="warning">
+                        202. Transitioning between Multiple Elements (Practice) key="warning"
+                    </div>
+                </transition>
+            </div>
+        </div>
     </div>
 
 
-    <transition name="slide-fade">
-        <div class="card" style="width: 18rem;" v-if="buttonCard">
-            <img :src="imgCard[0].url" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <button class="btn btn-primary" @click="buttonCard = !buttonCard">Go somewhere</button>
-            </div>
-        </div>
-    </transition>
-    <transition name="slide-fade">
-        <div class="card" style="width: 18rem;"v-if="!buttonCard">
-            <img :src="imgCard[1].url" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title2</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <button class="btn btn-primary" @click="buttonCard = !buttonCard">Go somewhere</button>
-            </div>
-        </div>
-    </transition>
+
+
 </div>
 
 

@@ -20,3 +20,31 @@
   transform: translateX(10px);
   opacity: 0;
 }
+
+
+
+
+
+body { font-family: 微軟正黑體; }
+button { margin-bottom: 10px; }
+
+#app {
+  padding: 10px;
+}
+
+.block {
+  background: #999;
+  color: #fff;
+  display: table-cell;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.v-leave { opacity: 1; }
+.v-leave-active { transition: opacity 1s }
+.v-leave-to { opacity: 0; }
+.v-enter { opacity: 0; }
+.v-enter-active  { transition: opacity 1s }
+.v-enter-to { opacity: 1; }
