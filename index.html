@@ -67,10 +67,11 @@
                 <div id="example-3">
 
 
-                    <transition name="slide-fade"
+                    <transition
                                 mode="out-in"
-                                enter-active-class="animated flipInY"
                                 leave-active-class="animated flipOutY"
+                                enter-active-class="animated flipInY"
+                                appear
                     >
                         <div class="card" style="width: 18rem;" v-if="buttonCard2" key="key1">
                             <img :src="imgCard[0].url" alt="...">
